@@ -27,17 +27,6 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "extra": {
-      "eas": {
-        "projectId": "REPLACE"
-      }
-    },
-    "updates": {
-      "url": "https://u.expo.dev/REPLACE",
-      "enabled": true,
-      "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0
-    },
     "plugins": [
       "expo-router",
       [
@@ -56,6 +45,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c2162bf7-dea6-421f-a599-278294811af4"
+      }
+    },
+    "owner": "gerrasim"
   }
 }
