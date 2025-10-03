@@ -1,17 +1,19 @@
 {
   "expo": {
-    "name": "myapp",
-    "slug": "myapp",
+    "name": "Aylia",
+    "slug": "aylia",
+    "scheme": "aylia",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aylia.finance"
     },
     "android": {
+      "package": "com.aylia.finance",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -24,6 +26,17 @@
     "web": {
       "output": "static",
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "REPLACE"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/REPLACE",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
     },
     "plugins": [
       "expo-router",
