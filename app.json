@@ -52,6 +52,12 @@
         "projectId": "c2162bf7-dea6-421f-a599-278294811af4"
       }
     },
-    "owner": "gerrasim"
+    "owner": "gerrasim",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/c2162bf7-dea6-421f-a599-278294811af4"
+    }
   }
 }
