@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: "20"
       - name: Install deps
-        run: npm ci
+        run: npm install
       - name: EAS CLI
         run: npm i -D eas-cli
       - name: Build Android (preview)
