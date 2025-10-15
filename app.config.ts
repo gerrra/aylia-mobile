@@ -22,16 +22,19 @@ const config: ExpoConfig = {
   slug: 'aylia',
   scheme: 'aylia',
   version: '1.0.0',
+  owner: 'gerrasim',
 
   ios: { bundleIdentifier: 'com.aylia.finance' },
   android: { package: 'com.aylia.finance' },
 
-  // EAS заполнит projectId и updates.url после `eas build:configure`.
   extra: {
     APP_ENV,
     API_URL: process.env.API_URL || 'https://api.example.com',
     // Для рантайма и TypeScript:
     _APP_EXTRA_TYPED: true,
+    eas: {
+      projectId: 'c2162bf7-dea6-421f-a599-278294811af4',
+    },
   },
 
   updates: {
