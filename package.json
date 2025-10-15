@@ -14,7 +14,8 @@
     "dev:local": "expo start --localhost",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,css,md}": [
