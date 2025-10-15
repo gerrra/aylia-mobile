@@ -41,6 +41,7 @@ const config: ExpoConfig = {
     enabled: true,
     checkAutomatically: 'ON_LOAD',
     fallbackToCacheTimeout: 0,
+    url: 'https://u.expo.dev/c2162bf7-dea6-421f-a599-278294811af4',
   },
 
   runtimeVersion: { policy: 'sdkVersion' },
