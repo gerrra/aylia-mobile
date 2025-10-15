@@ -1,11 +1,15 @@
-import { Text } from 'react-native';
 import Screen from '@/components/ui/Screen';
+import Text from '@/components/ui/Text';
+import { theme } from '@/src/theme';
+import { View } from 'react-native';
 
 export default function Settings() {
   return (
     <Screen>
-      <Text style={{ fontSize: 24, fontWeight: '600' }}>Settings</Text>
-      <Text>Экран настроек.</Text>
+      <Text variant="title">Settings</Text>
+      <Text variant="subtitle">Базовые настройки приложения</Text>
+      <View style={{ height: theme.spacing(4) }} />
+      <Text>Здесь позже появятся переключатели и параметры.</Text>
     </Screen>
   );
 }

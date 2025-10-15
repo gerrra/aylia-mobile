@@ -2,7 +2,7 @@ name: EAS Update (preview)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 jobs:
   ota-preview:
