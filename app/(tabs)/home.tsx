@@ -5,17 +5,29 @@ import Text from '@/components/ui/Text';
 import { theme } from '@/src/theme';
 import { getExtra } from '@/src/config';
 import { api } from '@/src/api/client';
+import { logger } from '@/src/lib/logger';
 
 export default function Home() {
   const config = getExtra();
   const [status, setStatus] = useState('...');
 
   useEffect(() => {
+    logger.info('Home screen mounted', {
+      env: config.APP_ENV,
+      apiUrl: config.API_URL,
+    });
+
     api
       .get<{ ok: boolean }>('/health')
-      .then(() => setStatus('API OK'))
-      .catch((e) => setStatus(`API ERR: ${e.message}`));
-  }, []);
+      .then(() => {
+        logger.info('Health check successful');
+        setStatus('API OK');
+      })
+      .catch((e) => {
+        logger.warn('Health check failed', { error: e.message });
+        setStatus(`API ERR: ${e.message}`);
+      });
+  }, [config.APP_ENV, config.API_URL]);
 
   return (
     <Screen>

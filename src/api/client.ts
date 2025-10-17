@@ -1,4 +1,5 @@
 import { getExtra } from '@/src/config';
+import { logger } from '@/src/lib/logger';
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
@@ -13,25 +14,43 @@ async function request<T>(
   } = {}
 ): Promise<T> {
   const url = `${API_URL}${path}`;
+  const method = options.method || 'GET';
+
+  logger.debug(`API Request: ${method} ${url}`, {
+    body: options.body,
+    headers: options.headers,
+  });
+
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     ...(options.headers || {}),
   };
 
-  const res = await fetch(url, {
-    method: options.method || 'GET',
-    headers,
-    body: options.body ? JSON.stringify(options.body) : undefined,
-  });
+  try {
+    const res = await fetch(url, {
+      method,
+      headers,
+      body: options.body ? JSON.stringify(options.body) : undefined,
+    });
 
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(
-      `HTTP ${res.status} ${res.statusText} — ${text || 'no body'}`
-    );
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      const error = `HTTP ${res.status} ${res.statusText} — ${text || 'no body'}`;
+      logger.error(`API Error: ${method} ${url}`, {
+        status: res.status,
+        statusText: res.statusText,
+        body: text,
+      });
+      throw new Error(error);
+    }
+
+    const data = (await res.json()) as T;
+    logger.debug(`API Success: ${method} ${url}`, { data });
+    return data;
+  } catch (error) {
+    logger.error(`API Exception: ${method} ${url}`, { error });
+    throw error;
   }
-
-  return (await res.json()) as T;
 }
 
 export const api = {
