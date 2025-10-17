@@ -20,8 +20,8 @@ export function demonstrateLogger() {
     throw new Error('Что-то пошло не так');
   } catch (error) {
     logger.error('Ошибка при обработке запроса', {
-      error: error.message,
-      stack: error.stack,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
       context: { userId: '12345', action: 'login' },
     });
   }
